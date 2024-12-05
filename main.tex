@@ -1,14 +1,36 @@
-\documentclass{article}
-\usepackage{graphicx} % Required for inserting images
+\documentclass[9pt]{extarticle}
+\usepackage{MyStyleSheet}
 
-\title{IST-DeepLearning}
-\author{elie.bruno }
-\date{December 2024}
 
+
+
+\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
+
+\title{Introduction to Machine Learning}
+\author{Elie BRUNO \\ Mateo THONET \\ Lancelot CHARVILLAT}
+\pagestyle{fancy}
+\lhead{Elie BRUNO \\
+Mateo THONET \\ Lancelot CHARVILLAT}
+\rhead{Report - Introduction-To-Machine-Learning}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+
+%%%%%%%%%%%%%%%%%%%
 \begin{document}
+\include{Title.tex}
+\tableofcontents
+\newpage
+%\include{Report-MS-I.tex}
+\twocolumn
+\include{Report-MS-II.tex}
 
-\maketitle
+\onecolumn
+%% switch to one column 
+% \include{appendix.tex}
+\include{appendix2.tex}
 
-\section{Introduction}
+
+
+
 
 \end{document}

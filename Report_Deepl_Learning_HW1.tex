@@ -1,33 +1,34 @@
 \documentclass[9pt]{extarticle}
-\usepackage{MyStyleSheet}
+\usepackage{utils/MyStyleSheet}
 
 
 
 
 \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
 
-\title{Introduction to Machine Learning}
-\author{Elie BRUNO \\ Mateo THONET \\ Lancelot CHARVILLAT}
+\title{Deep Learning}
+\author{Elie BRUNO \\ Maira GAUGES}
 \pagestyle{fancy}
 \lhead{Elie BRUNO \\
-Mateo THONET \\ Lancelot CHARVILLAT}
-\rhead{Report - Introduction-To-Machine-Learning}
+Maira GAUGES}
+\rhead{Report - Deep Learning}
 \cfoot{\thepage\ of \pageref{LastPage}}
 
 
 %%%%%%%%%%%%%%%%%%%
 \begin{document}
-\include{Title.tex}
+\include{utils/Title.tex}
 \tableofcontents
 \newpage
 %\include{Report-MS-I.tex}
 \twocolumn
-\include{Report-MS-II.tex}
+\include{questions/question1.tex}
+\include{questions/question2.tex}
+\include{questions/question3.tex}
 
 \onecolumn
 %% switch to one column 
-% \include{appendix.tex}
-\include{appendix2.tex}
+\include{utils/appendix.tex}
 
 
 

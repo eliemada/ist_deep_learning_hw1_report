@@ -1,1 +1,83 @@
 \section{Question II}
+\subsection{Logistic Regression}
+
+\subsubsection{Tuning Learning Rate}
+For this experiment, logistic regression was trained with a batch size of 32, L2 regularization set to 0.01, and a learning rate from the range $\{10^{-5}, 10^{-3}, 0.1\}$. The training was conducted for 100 epochs.
+
+\begin{table}[h]
+\centering
+\caption{Logistic Regression: Tuning Learning Rate}
+\label{tab:logistic_regression_lr}
+\begin{tabularx}{\columnwidth}{|X|X|X|X|X|}
+\hline
+\textbf{BS} & \textbf{LR} & \textbf{L2} & \textbf{Val Acc} & \textbf{Test Acc} \\ \hline
+ 32 & $10^{-5}$ & 0.01 & 0.4694 & 0.4623 \\ \hline
+ 32 & $10^{-3}$ & 0.01 & 0.5264 & 0.5247 \\ \hline
+ 32 & 0.1 & 0.01 & 0.3889 & 0.3807 \\ \hline
+\end{tabularx}
+\end{table}
+
+The best performance was achieved with a learning rate of $10^{-3}$, resulting in the highest validation and test accuracy (\cref{tab:logistic_regression_lr}). The training and validation losses for different learning rates are shown in \cref{fig:log_reg_loss}, and the validation accuracies are presented in \cref{fig:log_reg_acc}.
+
+\subsection{Feedforward Neural Network (MLP)}
+
+\subsubsection{Default Hyperparameters vs. Batch Size = 512}
+For this experiment, the default hyperparameters were used, and the batch size was varied between 64 (default) and 512.
+
+\begin{table}[h]
+\centering
+\caption{Feedforward Neural Network: Default Hyperparameters vs. Batch Size = 512}
+\label{tab:mlp_batch_sizes}
+\begin{tabularx}{\columnwidth}{|X|X|X|X|X|X|}
+\hline
+ \textbf{BS} & \textbf{HS} & \textbf{L} & \textbf{Drop} & \textbf{Val Acc} & \textbf{Test Acc} \\ \hline
+ 64 & 200 & 2 & 0.3 & 0.6068 & 0.6057 \\ \hline
+ 512 & 200 & 2 & 0.3 & 0.5028 & 0.5200 \\ \hline
+\end{tabularx}
+\end{table}
+
+The results (\cref{tab:mlp_batch_sizes}) demonstrate that a smaller batch size (64) yields better performance. The corresponding training and validation losses are presented in \cref{fig:mlp_batch_size_loss}, and the validation accuracies are in \cref{fig:mlp_batch_size_acc}.
+
+\subsubsection{Effect of Dropout}
+The effect of different dropout values $\{0.01, 0.25, 0.5\}$ was explored.
+
+\begin{table}[h]
+\centering
+\caption{Feedforward Neural Network: Effect of Dropout}
+\label{tab:mlp_dropout}
+\begin{tabularx}{\columnwidth}{|X|X|X|X|X|X|}
+\hline
+\textbf{Model} & \textbf{Drop} & \textbf{HS} & \textbf{L} & \textbf{Val Acc} & \textbf{Test Acc} \\ \hline
+MLP & 0.01 & 200 & 2 & 0.5741 & 0.5713 \\ \hline
+MLP & 0.25 & 200 & 2 & 0.6054 & 0.6000 \\ \hline
+MLP & 0.5 & 200 & 2 & 0.6026 & 0.5963 \\ \hline
+\end{tabularx}
+\end{table}
+
+The results (\cref{tab:mlp_dropout}) indicate that dropout values around 0.25–0.3 achieve the best balance between regularization and performance. Training and validation losses for different dropout values are shown in \cref{fig:mlp_dropout_loss}, and the validation accuracies are presented in \cref{fig:mlp_dropout_acc}.
+
+\subsubsection{Effect of Momentum}
+Momentum values $\{0.0, 0.9\}$ were tested with a batch size of 1024.
+
+\begin{table}[h]
+\centering
+\caption{Feedforward Neural Network: Effect of Momentum}
+\label{tab:mlp_momentum}
+\begin{tabularx}{\columnwidth}{|X|X|X|X|X|X|}
+\hline
+\textbf{Model} & \textbf{Mom} & \textbf{BS} & \textbf{Val Acc} & \textbf{Test Acc} \\ \hline
+MLP & 0.0 & 1024 & 0.4701 & 0.4883 \\ \hline
+MLP & 0.9 & 1024 & 0.5933 & 0.6033 \\ \hline
+\end{tabularx}
+\end{table}
+
+The results (\cref{tab:mlp_momentum}) demonstrate that using momentum significantly improves validation and test accuracy. Training and validation losses for different momentum values are shown in \cref{fig:mlp_momentum_loss}, and the validation accuracies are presented in \cref{fig:mlp_momentum_acc}.
+
+\subsection{Discussion}
+The results show:
+\begin{itemize}
+    \item The optimal learning rate for logistic regression was $10^{-3}$ (\cref{tab:logistic_regression_lr}).
+    \item Increasing the batch size reduced training time but negatively impacted accuracy (\cref{tab:mlp_batch_sizes}).
+    \item Dropout values around 0.25 to 0.3 balanced regularization and model performance (\cref{tab:mlp_dropout}).
+    \item Momentum significantly improved accuracy for large batch sizes (\cref{tab:mlp_momentum}).
+\end{itemize}

@@ -1,4 +1,6 @@
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern} % Latin Modern fonts for text
+\usepackage{unicode-math} % For modern math fonts
 \usepackage[a4paper,
             left=0.875in,
             right=0.875in,
@@ -12,7 +14,7 @@
 \usepackage{fancyvrb}
 \usepackage{hyperref}
 \usepackage[nameinlink]{cleveref} % nameinlink option makes the entire thing (name+number) clickable
-\usepackage{amssymb}
+
 \usepackage{lastpage}
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{nicematrix}
@@ -26,7 +28,11 @@
 \usepackage{enumitem}
 \usepackage{karnaugh-map}
 \usepackage{svg}
-\usepackage{subfig}
+% \usepackage{subfig}
+\usepackage{tabularx} % Include in your preamble
+\usepackage{subcaption} % Include this in your preamble
+
+\setmathfont{Latin Modern Math}
 
 
 % \newcommand{\imagehere}[2][1]{\begin{center}\includegraphics[width=#1\textwidth]{#2}\end{center}}
